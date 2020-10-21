@@ -12,8 +12,9 @@ function App() {
       <header className="App-header">
         <BrowserRouter>
         <Switch>
+                  <Route path="/setup" component={Change}/>
                  <Route path="/" component={Dollars}/>
-                 <Route path="/cambiar" component={Change}/>
+                 
                  
           </Switch>
           <Switch>

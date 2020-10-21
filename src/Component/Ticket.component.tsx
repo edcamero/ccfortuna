@@ -5,14 +5,15 @@ import { Typography } from '@material-ui/core'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
       image:{
-          maxWidth:300
+          maxWidth:350
       }
 
   }))
 
   interface ITicket{
     image:string,
-    value:number
+    value:number,
+    deno:number
   }
 
 const Ticket:React.FC<ITicket>=(props)=>{
@@ -25,7 +26,7 @@ const Ticket:React.FC<ITicket>=(props)=>{
           data-testid="image-ticket"
           className={classes.image}
         />
-        <Typography variant="h6" component="h6">{props.value+" COP"}</Typography>
+        <Typography variant="h6" component="h6">{props.deno+"x"+props.value+" = "+props.value*props.deno+" COP"}</Typography>
         </div>
     )
 }
