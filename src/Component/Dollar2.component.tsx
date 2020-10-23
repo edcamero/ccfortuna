@@ -5,11 +5,13 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import DollarImage from "../billetes/dollar.jpeg";
+import Dollar1 from "../billetes/dollar/dollar-1.jpg";
+import Dollar5 from "../billetes/dollar/dollar-5.jpg";
+import Dollar10 from "../billetes/dollar/dollar-10.jpg";
 import Dollar20 from "../billetes/dollar/dollar-20.jpg";
 import Dollar50 from "../billetes/dollar/dollar-50.jpg";
 import Dollar100 from "../billetes/dollar/dollar-100.jpg";
 import Logo from "../logo.jpeg";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,8 +58,7 @@ const dollar: IDollar = {
   dollar100: 0,
 };
 
-const Dollars: React.FC = () => {
-  let history = useHistory();
+const Dollars2: React.FC = () => {
   const [dollars, setDollars] = React.useState<IDollar>(dollar);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const classes = useStyles({});
@@ -67,46 +68,42 @@ const Dollars: React.FC = () => {
       setDollars(JSON.parse(strDollar));
     }
   };
-  function pushable() {
-    history.push("/dolar2");
-  }
   React.useEffect(() => {
     if (!isLoading) {
       setIsLoading(true);
       readData();
-      setInterval(pushable, 3000)
     }
   }, [isLoading, setIsLoading]);
   return (
     <React.Fragment>
-      <Grid
-        container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-      >
-        <Grid container item xs={12} direction="row" className={classes.card}>
-          <Grid item xs={6} className={classes.boder}>
-            <Typography variant="h2" component="h6" className={classes.text}>
-              Dolar
-            </Typography>
-          </Grid>
-          <Grid item xs={6} className={classes.boder}>
-            <Link href="/setup" color="inherit">
-              <img
-                src={DollarImage}
-                alt="imagen del Dolar"
-                data-testid="image-ticket"
-                className={classes.image}
-              />
-            </Link>
-          </Grid>
-        </Grid>        
-        <Ticket image={Dollar100} value={dollars.dollar100} deno={100} />
-        <Ticket image={Dollar50} value={dollars.dollar50} deno={50} />
-        <Ticket image={Dollar20} value={dollars.dollar20} deno={20} />
+    <Grid
+      container
+      direction="row"
+      justify="space-around"
+      alignItems="center"
+    >
+      <Grid container item xs={12} direction="row" className={classes.card}>
+        <Grid item xs={6} className={classes.boder}>
+          <Typography variant="h2" component="h6" className={classes.text}>
+            Dolar
+          </Typography>
+        </Grid>
+        <Grid item xs={6} className={classes.boder}>
+          <Link href="/setup" color="inherit">
+            <img
+              src={DollarImage}
+              alt="imagen del Dolar"
+              data-testid="image-ticket"
+              className={classes.image}
+            />
+          </Link>
+        </Grid>
+      </Grid>           
+        <Ticket image={Dollar10} value={dollars.dollar10} deno={10} />
+        <Ticket image={Dollar5} value={dollars.dollar5} deno={5} />
+        <Ticket image={Dollar1} value={dollars.dollar1} deno={1} />
       </Grid>
     </React.Fragment>
   );
 };
-export default Dollars;
+export default Dollars2;
