@@ -8,7 +8,6 @@ import DollarImage from "../billetes/dollar.jpeg";
 import Dollar20 from "../billetes/dollar/dollar-20.jpg";
 import Dollar50 from "../billetes/dollar/dollar-50.jpg";
 import Dollar100 from "../billetes/dollar/dollar-100.jpg";
-import Logo from "../logo.jpeg";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -67,7 +66,7 @@ const Dollars: React.FC = () => {
       setDollars(JSON.parse(strDollar));
     }
   };
-  function pushable() {
+  const pushable=()=> {
     history.push("/dolar2");
   }
   React.useEffect(() => {
@@ -76,9 +75,11 @@ const Dollars: React.FC = () => {
       readData();
       setInterval(pushable, 3000)
     }
-  }, [isLoading, setIsLoading]);
+  }, [isLoading, setIsLoading , pushable]);
   return (
+    
     <React.Fragment>
+      
       <Grid
         container
         direction="row"
