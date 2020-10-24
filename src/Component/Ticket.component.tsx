@@ -27,6 +27,7 @@ interface ITicket {
   image: string;
   value: number;
   deno: number;
+  divisa: string;
 }
 
 const Ticket: React.FC<ITicket> = (props) => {
@@ -51,7 +52,7 @@ const Ticket: React.FC<ITicket> = (props) => {
         alignItems="center"
       >
         <Typography variant="h4" component="h6" className={classes.text}>
-          <Hidden mdDown>Denominación: </Hidden> {props.deno}{" USD"}
+          <Hidden mdDown>Denominación: </Hidden> {props.deno}{" "+props.divisa}
         </Typography>
       </Grid>
       <Grid

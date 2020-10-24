@@ -71,6 +71,7 @@ const Dollars2: React.FC = () => {
       readData();
     }
   }, [isLoading, setIsLoading]);
+
   return (
     <React.Fragment>
     <Grid
@@ -96,9 +97,9 @@ const Dollars2: React.FC = () => {
           </Link>
         </Grid>
       </Grid>           
-        <Ticket image={Dollar10} value={dollars.dollar10} deno={10} />
-        <Ticket image={Dollar5} value={dollars.dollar5} deno={5} />
-        <Ticket image={Dollar1} value={dollars.dollar1} deno={1} />
+        <Ticket image={Dollar10} value={dollars.dollar10} deno={10} divisa='USD' />
+        <Ticket image={Dollar5} value={dollars.dollar5} deno={5} divisa='USD' />
+        <Ticket image={Dollar1} value={dollars.dollar1} deno={1} divisa='USD' />
       </Grid>
     </React.Fragment>
   );

@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 import Ticket from "./Ticket.component";
 import { Typography } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import DollarImage from "../billetes/dollar.jpeg";
-import Dollar20 from "../billetes/dollar/dollar-20.jpg";
-import Dollar50 from "../billetes/dollar/dollar-50.jpg";
-import Dollar100 from "../billetes/dollar/dollar-100.jpg";
-
+import EuroImage from '../billetes/euro.jpeg'
+import Euro20 from '../billetes/euro/euro-20.jpg'
+import Euro10 from '../billetes/euro/euro-10.jpg'
+import Euro5 from '../billetes/euro/euro-5.jpg'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,45 +37,46 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface IDollar {
-  dollar1: number;
-  dollar5: number;
-  dollar10: number;
-  dollar20: number;
-  dollar50: number;
-  dollar100: number;
-}
-const dollar: IDollar = {
-  dollar1: 0,
-  dollar5: 0,
-  dollar10: 0,
-  dollar20: 0,
-  dollar50: 0,
-  dollar100: 0,
-};
 
-const Dollars: React.FC = () => {
-  const [dollars, setDollars] = React.useState<IDollar>(dollar);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const classes = useStyles({});
-  const readData = () => {
-    let strDollar = localStorage.getItem("dollars");
-    if (strDollar !== undefined && strDollar !== null) {
-      setDollars(JSON.parse(strDollar));
-    }
-  };
+  interface IEuro {
+    euro5 :number
+    euro10 :number
+    euro20 :number
+    euro50 :number
+    euro100 :number
+    euro200 :number
+    euro500 :number
+  }
 
-  React.useEffect(() => {
-    if (!isLoading) {
-      setIsLoading(true);
-      readData();
-     
-    }
-  }, [isLoading, setIsLoading]);
-  return (
+  const euro:IEuro={
+    euro5 :0,
+    euro10 :0,
+    euro20 :0,
+    euro50 :0,
+    euro100 :0,
+    euro200 :0,
+    euro500 :0,
+  }
+const Euros:React.FC=()=>{
+    const [euros, setEuros] = React.useState<IEuro>(euro)
+    const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const classes = useStyles({});
+    const readData = () => {
+      let strEuros = localStorage.getItem("euros");
+      if (strEuros !== undefined && strEuros!== null) {
+        setEuros(JSON.parse(strEuros));
+      }
+    };
+
+    React.useEffect(() => {
+      if (!isLoading) {
+        setIsLoading(true);
+        readData();
+      }
+    }, [isLoading, setIsLoading]);
     
-    <React.Fragment>
-      
+    return(
+      <React.Fragment>
       <Grid
         container
         direction="row"
@@ -86,25 +86,25 @@ const Dollars: React.FC = () => {
         <Grid container item xs={12} direction="row" className={classes.card}>
           <Grid item xs={6} className={classes.boder}>
             <Typography variant="h2" component="h6" className={classes.text}>
-              Dolar
+              Euros
             </Typography>
           </Grid>
           <Grid item xs={6} className={classes.boder}>
             <Link href="/setup" color="inherit">
               <img
-                src={DollarImage}
+                src={EuroImage}
                 alt="imagen del Dolar"
                 data-testid="image-ticket"
                 className={classes.image}
               />
             </Link>
           </Grid>
-        </Grid>        
-        <Ticket image={Dollar100} value={dollars.dollar100} deno={100} divisa='USD' />
-        <Ticket image={Dollar50} value={dollars.dollar50} deno={50} divisa='USD' />
-        <Ticket image={Dollar20} value={dollars.dollar20} deno={20} divisa='USD' />
-      </Grid>
-    </React.Fragment>
-  );
-};
-export default Dollars;
+        </Grid>           
+          <Ticket image={Euro20} value={euros.euro20} deno={20} divisa='EUR' />
+          <Ticket image={Euro10} value={euros.euro10} deno={10} divisa='EUR' />
+          <Ticket image={Euro5} value={euros.euro5} deno={5} divisa='EUR' />
+        </Grid>
+      </React.Fragment>
+    );
+  };
+export default Euros
