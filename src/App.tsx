@@ -10,8 +10,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Banner/>
+        
         <BrowserRouter>
+        <Banner/>
         <Switch>
                   <Route path="/setup" component={Change}/>
                   <Route path="/dolar2" component={Dollars2}/>

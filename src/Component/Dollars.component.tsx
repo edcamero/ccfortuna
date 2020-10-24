@@ -8,7 +8,7 @@ import DollarImage from "../billetes/dollar.jpeg";
 import Dollar20 from "../billetes/dollar/dollar-20.jpg";
 import Dollar50 from "../billetes/dollar/dollar-50.jpg";
 import Dollar100 from "../billetes/dollar/dollar-100.jpg";
-import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,7 +56,6 @@ const dollar: IDollar = {
 };
 
 const Dollars: React.FC = () => {
-  let history = useHistory();
   const [dollars, setDollars] = React.useState<IDollar>(dollar);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const classes = useStyles({});
@@ -66,16 +65,14 @@ const Dollars: React.FC = () => {
       setDollars(JSON.parse(strDollar));
     }
   };
-  const pushable=()=> {
-    history.push("/dolar2");
-  }
+
   React.useEffect(() => {
     if (!isLoading) {
       setIsLoading(true);
       readData();
-      setInterval(pushable, 3000)
+     
     }
-  }, [isLoading, setIsLoading , pushable]);
+  }, [isLoading, setIsLoading]);
   return (
     
     <React.Fragment>
