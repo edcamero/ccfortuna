@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
     euro200 :0,
     euro500 :0,
   }
-const Euros:React.FC=()=>{
+const Euros2:React.FC=()=>{
     const [euros, setEuros] = React.useState<IEuro>(euro)
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
     const classes = useStyles({});
@@ -107,4 +107,4 @@ const Euros:React.FC=()=>{
       </React.Fragment>
     );
   };
-export default Euros
+export default Euros2

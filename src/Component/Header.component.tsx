@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header:React.FC=()=>{
   let history = useHistory();
-  let rutas=['/','/dolar2','/wallpaper','euros1','euros1','/wallpaper']
+  let rutas=['/','/dolar2','/wallpaper','euros1','euros2','/wallpaper']
   let cont=0
     const classes=useStyles()
     const pushable=()=> {
