@@ -13,12 +13,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header:React.FC=()=>{
   let history = useHistory();
-  let rutas=['/','dolar2']
+  let rutas=['/','/wallpaper','/dolar2','/wallpaper']
   let cont=0
     const classes=useStyles()
     const pushable=()=> {
       history.push(rutas[cont++]);
-      cont=cont>1?0:cont
+      cont=cont>3?0:cont
     }
     setInterval(pushable, 3000)
     return (
